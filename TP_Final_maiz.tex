@@ -1,0 +1,700 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={TP\_Final\_basico},
+  pdfauthor={Grupo 1},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{TP\_Final\_basico}
+\author{Grupo 1}
+\date{2024-04-24}
+
+\begin{document}
+\maketitle
+
+\#Cargar Archivo CSV
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{datos }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"/cloud/project/Prod\_maiz.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\#Ver Cabecera del archivo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(datos)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   cultivo_nombre anio  campania provincia_nombre provincia_id
+## 1           maiz 1924 1924/1925     Buenos Aires            6
+## 2           maiz 1924 1924/1925     Buenos Aires            6
+## 3           maiz 1924 1924/1925     Buenos Aires            6
+## 4           maiz 1924 1924/1925     Buenos Aires            6
+## 5           maiz 1924 1924/1925     Buenos Aires            6
+## 6           maiz 1924 1924/1925     Buenos Aires            6
+##      departamento_nombre departamento_id superficie_sembrada_ha
+## 1             25 de Mayo            6854                  46000
+## 2             9 de Julio            6588                  49350
+## 3          Adolfo Alsina            6007                  17000
+## 4 Adolfo Gonzales Chaves            6014                   1900
+## 5                Alberti            6021                  27000
+## 6               Ayacucho            6042                   7000
+##   superficie_cosechada_ha produccion_tm rendimiento_kgxha
+## 1                   40000         72000              1800
+## 2                   29510         53298              1800
+## 3                    8500          8500              1000
+## 4                    1710          1881              1100
+## 5                   21600         38880              1800
+## 6                    5600         11200              2000
+\end{verbatim}
+
+\hypertarget{ver-el-pie-del-archivo}{%
+\section{Ver el pie del archivo}\label{ver-el-pie-del-archivo}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tail}\NormalTok{(datos)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       cultivo_nombre anio campania provincia_nombre provincia_id
+## 31838           maiz 2015  2015/16          Tucuman           90
+## 31839           maiz 2016  2016/17          Tucuman           90
+## 31840           maiz 2017  2017/18          Tucuman           90
+## 31841           maiz 2018  2018/19          Tucuman           90
+## 31842           maiz 2019  2019/20          Tucuman           90
+## 31843           maiz 1997  1997/98          Tucuman           90
+##       departamento_nombre departamento_id superficie_sembrada_ha
+## 31838             Trancas           90112                    750
+## 31839             Trancas           90112                    750
+## 31840             Trancas           90112                    750
+## 31841             Trancas           90112                    700
+## 31842             Trancas           90112                    650
+## 31843         Yerba Buena           90119                    100
+##       superficie_cosechada_ha produccion_tm rendimiento_kgxha
+## 31838                     270          1890              7000
+## 31839                     350          2415              6900
+## 31840                     240          1800              7500
+## 31841                     400          3120              7800
+## 31842                     150           945              6300
+## 31843                     100           500              5000
+\end{verbatim}
+
+\hypertarget{seleccionar-las-columnas-de-interuxe9s}{%
+\section{Seleccionar las columnas de
+interés}\label{seleccionar-las-columnas-de-interuxe9s}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{columnas\_interes }\OtherTok{\textless{}{-}}\NormalTok{ datos[,}\FunctionTok{c}\NormalTok{(}\DecValTok{8}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{11}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{promedio-de-cada-columna-de-interuxe9s}{%
+\section{Promedio de cada columna de
+interés}\label{promedio-de-cada-columna-de-interuxe9s}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{promedio\_columnas }\OtherTok{\textless{}{-}} \FunctionTok{colMeans}\NormalTok{(columnas\_interes, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(promedio\_columnas)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  superficie_sembrada_ha superficie_cosechada_ha           produccion_tm 
+##               12752.365               10011.702               36523.995 
+##       rendimiento_kgxha 
+##                2411.686
+\end{verbatim}
+
+\hypertarget{desvio-estuxe1ndar-de-las-columnas-seleccionadas}{%
+\section{Desvio estándar de las columnas
+seleccionadas}\label{desvio-estuxe1ndar-de-las-columnas-seleccionadas}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{desvio\_columnas }\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(columnas\_interes,}\DecValTok{2}\NormalTok{,sd,}\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(desvio\_columnas)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  superficie_sembrada_ha superficie_cosechada_ha           produccion_tm 
+##               28634.412               24723.967              118047.301 
+##       rendimiento_kgxha 
+##                2116.751
+\end{verbatim}
+
+\hypertarget{crear-histograma-del-rendimiento}{%
+\section{Crear histograma del
+rendimiento}\label{crear-histograma-del-rendimiento}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(datos}\SpecialCharTok{$}\NormalTok{rendimiento\_kgxha,}
+     \AttributeTok{breaks =} \DecValTok{20}\NormalTok{, }
+     \AttributeTok{col =} \StringTok{"lightblue"}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Distribución del Rendimiento de Maíz"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Rendimiento (kg/ha)"}\NormalTok{,}
+     \AttributeTok{ylab =} \StringTok{"Frecuencia"}\NormalTok{,}
+     \AttributeTok{xlim =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{15000}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TP_Final_maiz_files/figure-latex/unnamed-chunk-7-1.pdf}
+\#\#\# El gráfico \textbf{\emph{``Distribución del Rendimiento de
+Maiz''}} mustra la frecuencia de diferente rangos de rendimiento de maíz
+en kilogramos por hectárea (Kg/ha).
+
+\begin{itemize}
+\item
+  \textbf{\emph{Eje Y}}: Representa la \textbf{\emph{``Frecuencia''}}
+  con una escala de 0 a 20000.
+\item
+  \textbf{\emph{Eje X}}: Muestra el ``Rendimiento (Kg/ha)'' con una
+  escala de 0 a 15000.
+\item
+  \textbf{\emph{Barras Azules}}: hay cinco barras que representan
+  diferentes rangos de rendimiento. La altura de cada barra indica la
+  frecuencia de ese rango de rendimiento.
+\end{itemize}
+
+La deistribución es tal que hay na frecuencia muy alta, cerca de 20000,
+para un renidmiento de 0 a aproximadamente 2500 kg/ha. La barras
+siguientes son considereadamente mas bajas, indicando una distribución
+en la frecuencia a medida que aumenta el rango de rendimiento.
+\emph{Esto sugiere que los rendimientos más altos son menos comunes}.
+
+\hypertarget{crear-histograma-de-la-superficie-sembrada}{%
+\section{Crear histograma de la Superficie
+Sembrada}\label{crear-histograma-de-la-superficie-sembrada}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(datos}\SpecialCharTok{$}\NormalTok{superficie\_sembrada\_ha,}
+     \AttributeTok{breaks =} \DecValTok{20}\NormalTok{, }
+     \AttributeTok{col =} \StringTok{"lightblue"}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Distribución de Superficie Sembrada de Maíz"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Superficie Sembrada (hectáreas)"}\NormalTok{,}
+     \AttributeTok{ylab =} \StringTok{"Frecuencia"}\NormalTok{,}
+     \AttributeTok{xlim =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{150000}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TP_Final_maiz_files/figure-latex/unnamed-chunk-8-1.pdf}
+\#\#\# El gráfico \textbf{``Distribución de Superficie Sembrada de
+Maiz''} muestra la frecuencia de la superficie sembrada de maíz en
+hectáreas.
+
+\begin{itemize}
+\item
+  El eje Y representa la \textbf{``Frecuencia''} con un rango de 0 a
+  25000.
+\item
+  El eje X muestra la \textbf{``Superficie Sembrada (hectareas)''} con
+  un rango que va desde 0 hasta 150000
+\end{itemize}
+
+Hay dos barras en el grafico:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Una Barra muy alta que llega hasta aproximandamente 25000 en
+  frecuencia para un rango bajo de superficie sembrada
+\item
+  Otra barra mucho mas corta para un rango ligeramente superior de
+  superficie sembrada.
+\end{enumerate}
+
+Esto indica que hay una gran frecuencia de áreas donde se siembra una
+cantidad menor de maís, mientras que hay menos áreas donde se siembre
+una manyor cantidad.
+
+\hypertarget{crear-histograma-de-la-superficie-cosechada}{%
+\section{Crear histograma de la superficie
+cosechada}\label{crear-histograma-de-la-superficie-cosechada}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(datos}\SpecialCharTok{$}\NormalTok{superficie\_cosechada\_ha,}
+     \AttributeTok{breaks =} \DecValTok{20}\NormalTok{, }
+     \AttributeTok{col =} \StringTok{"lightblue"}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Distribución de Superficie Cosechada de Maíz"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Superficie Cosechada (hectáreas)"}\NormalTok{,}
+     \AttributeTok{ylab =} \StringTok{"Frecuencia"}\NormalTok{,}
+     \AttributeTok{xlim =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{150000}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TP_Final_maiz_files/figure-latex/unnamed-chunk-9-1.pdf}
+\#\#\# El gráfico ***``Distribución de Superficie Cosechada de Maiz'' es
+un grafico de barras horizontales que muestra la frecuencia de las
+superficie cosechada de maiz en diferentes rangos de hectáreas.
+
+\begin{itemize}
+\item
+  Eje Y representa la \textbf{\emph{Frecuencia}} con una escala que va
+  de 0 a 25000.
+\item
+  Eje X representa \textbf{\emph{Superficie Cosechada en hectáreas}} con
+  una escala de 0 a 150000 hectareas.
+\item
+  Barras del gráfico:
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \item
+    La primera barra representa una frecuencia muy alta (hasta 25000)
+    para una superficie cosechada baja (0 a 50000 hectareas).
+  \item
+    La segunda barra representa una frecuencia significativamente mas
+    baja para un rango de superfice cosechada ligeramente mayor (50000 a
+    1000000 hectáreas).
+  \end{enumerate}
+\end{itemize}
+
+No hay barras presentes para rangos superiores a 100000 hectareas, lo
+que indica que o hay datos o que son insignifacntes para esos rangos.
+Por lo tanto, el grafico muestra que la mayorá de la superficie
+cosechada se encuentra en el rango de 0 a 50000 hectáreas.
+
+\hypertarget{crear-histograma-de-la-producciuxf3n}{%
+\section{Crear histograma de la
+producción}\label{crear-histograma-de-la-producciuxf3n}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(datos}\SpecialCharTok{$}\NormalTok{produccion\_tm,}
+     \AttributeTok{breaks =} \DecValTok{20}\NormalTok{, }
+     \AttributeTok{col =} \StringTok{"lightblue"}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Distribución de Producción de Maíz"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Producción (toneladas)"}\NormalTok{,}
+     \AttributeTok{ylab =} \StringTok{"Frecuencia"}\NormalTok{,}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TP_Final_maiz_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+\NormalTok{Prod\_maiz }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"Prod\_maiz.csv"}\NormalTok{, }\AttributeTok{col\_types =} \FunctionTok{cols}\NormalTok{(}\AttributeTok{provincia\_id =} \FunctionTok{col\_double}\NormalTok{(), }
+    \AttributeTok{departamento\_id =} \FunctionTok{col\_double}\NormalTok{()))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(Prod\_maiz)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  cultivo_nombre          anio        campania         provincia_nombre  
+##  Length:31843       Min.   :1924   Length:31843       Length:31843      
+##  Class :character   1st Qu.:1949   Class :character   Class :character  
+##  Mode  :character   Median :1969   Mode  :character   Mode  :character  
+##                     Mean   :1971                                        
+##                     3rd Qu.:1991                                        
+##                     Max.   :2019                                        
+##                                                                         
+##   provincia_id   departamento_nombre departamento_id superficie_sembrada_ha
+##  Min.   : 0.00   Length:31843        Min.   :    0   Min.   :     1        
+##  1st Qu.: 6.00   Class :character    1st Qu.: 6693   1st Qu.:   600        
+##  Median :22.00   Mode  :character    Median :22105   Median :  3300        
+##  Mean   :35.07                       Mean   :35127   Mean   : 12752        
+##  3rd Qu.:62.00                       3rd Qu.:62035   3rd Qu.: 13000        
+##  Max.   :94.00                       Max.   :90119   Max.   :558000        
+##                                      NA's   :173                           
+##  superficie_cosechada_ha produccion_tm     rendimiento_kgxha
+##  Min.   :     0          Min.   :      0   Min.   :    0    
+##  1st Qu.:   400          1st Qu.:    490   1st Qu.: 1000    
+##  Median :  2200          Median :   3600   Median : 1570    
+##  Mean   : 10012          Mean   :  36524   Mean   : 2412    
+##  3rd Qu.:  8600          3rd Qu.:  22500   3rd Qu.: 3000    
+##  Max.   :499860          Max.   :3399048   Max.   :33333    
+##  NA's   :532             NA's   :533       NA's   :533
+\end{verbatim}
+
+\#\#Box plots
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{boxplot}\NormalTok{(Prod\_maiz}\SpecialCharTok{$}\NormalTok{superficie\_sembrada\_ha)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TP_Final_maiz_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{boxplot}\NormalTok{(Prod\_maiz}\SpecialCharTok{$}\NormalTok{superficie\_cosechada\_ha)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TP_Final_maiz_files/figure-latex/unnamed-chunk-13-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{boxplot}\NormalTok{(Prod\_maiz}\SpecialCharTok{$}\NormalTok{produccion\_tm)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TP_Final_maiz_files/figure-latex/unnamed-chunk-13-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{boxplot}\NormalTok{(Prod\_maiz}\SpecialCharTok{$}\NormalTok{rendimiento\_kgxha)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TP_Final_maiz_files/figure-latex/unnamed-chunk-13-4.pdf}
+\#\# Histogramas
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{hist}\NormalTok{(Prod\_maiz}\SpecialCharTok{$}\NormalTok{superficie\_sembrada\_ha))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TP_Final_maiz_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{hist}\NormalTok{(Prod\_maiz}\SpecialCharTok{$}\NormalTok{superficie\_cosechada\_ha))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TP_Final_maiz_files/figure-latex/unnamed-chunk-14-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{hist}\NormalTok{(Prod\_maiz}\SpecialCharTok{$}\NormalTok{produccion\_tm))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TP_Final_maiz_files/figure-latex/unnamed-chunk-14-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{hist}\NormalTok{(Prod\_maiz}\SpecialCharTok{$}\NormalTok{rendimiento\_kgxha))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TP_Final_maiz_files/figure-latex/unnamed-chunk-14-4.pdf}
+
+\hypertarget{density-plots}{%
+\subsection{Density plots}\label{density-plots}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{density}\NormalTok{(}\FunctionTok{na.omit}\NormalTok{(Prod\_maiz}\SpecialCharTok{$}\NormalTok{superficie\_sembrada\_ha)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TP_Final_maiz_files/figure-latex/unnamed-chunk-15-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{density}\NormalTok{(}\FunctionTok{na.omit}\NormalTok{(Prod\_maiz}\SpecialCharTok{$}\NormalTok{superficie\_cosechada\_ha)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TP_Final_maiz_files/figure-latex/unnamed-chunk-15-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{density}\NormalTok{(}\FunctionTok{na.omit}\NormalTok{(Prod\_maiz}\SpecialCharTok{$}\NormalTok{produccion\_tm)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TP_Final_maiz_files/figure-latex/unnamed-chunk-15-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{density}\NormalTok{(}\FunctionTok{na.omit}\NormalTok{(Prod\_maiz}\SpecialCharTok{$}\NormalTok{rendimiento\_kgxha)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TP_Final_maiz_files/figure-latex/unnamed-chunk-15-4.pdf}
+
+\hypertarget{relacion-sup_sembrada-vs-sup_cosecha}{%
+\subsection{Relacion sup\_sembrada vs
+sup\_cosecha}\label{relacion-sup_sembrada-vs-sup_cosecha}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{numeric\_columns }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(Prod\_maiz, is.numeric)}
+\NormalTok{numeric\_data }\OtherTok{\textless{}{-}}\NormalTok{ Prod\_maiz[, numeric\_columns]}
+\CommentTok{\#pairs (numeric\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(skimr)}
+\FunctionTok{skim}\NormalTok{(datos)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: There was 1 warning in `dplyr::summarize()`.
+## i In argument: `dplyr::across(tidyselect::any_of(variable_names),
+##   mangled_skimmers$funs)`.
+## i In group 0: .
+## Caused by warning:
+## ! There were 601 warnings in `dplyr::summarize()`.
+## The first warning was:
+## i In argument: `dplyr::across(tidyselect::any_of(variable_names),
+##   mangled_skimmers$funs)`.
+## Caused by warning in `grepl()`:
+## ! unable to translate 'Ca<f1>uelas' to a wide string
+## i Run `dplyr::last_dplyr_warnings()` to see the 600 remaining warnings.
+\end{verbatim}
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{Data summary}\tabularnewline
+\toprule\noalign{}
+\endfirsthead
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Name & datos \\
+Number of rows & 31843 \\
+Number of columns & 11 \\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ & \\
+Column type frequency: & \\
+character & 4 \\
+numeric & 7 \\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ & \\
+Group variables & None \\
+\end{longtable}
+
+\textbf{Variable type: character}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.2564}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1282}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1795}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0513}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0513}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0769}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1154}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1410}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+skim\_variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_missing
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+complete\_rate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+min
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+max
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+empty
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_unique
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+whitespace
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+cultivo\_nombre & 0 & 1 & 4 & 4 & 0 & 1 & 0 \\
+campania & 0 & 1 & 7 & 9 & 0 & 96 & 0 \\
+provincia\_nombre & 0 & 1 & 5 & 19 & 0 & 25 & 0 \\
+departamento\_nombre & 0 & 1 & 0 & 34 & 169 & 431 & 0 \\
+\end{longtable}
+
+\textbf{Variable type: numeric}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.2330}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0971}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1359}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0874}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0971}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0485}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0485}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0583}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0583}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0777}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0583}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+skim\_variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_missing
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+complete\_rate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+mean
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+sd
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p0
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p25
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p50
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p75
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p100
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+hist
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+anio & 0 & 1.00 & 1970.76 & 25.67 & 1924 & 1949 & 1969 & 1991 & 2019 &
+▆▇▇▆▆ \\
+provincia\_id & 0 & 1.00 & 35.07 & 29.44 & 0 & 6 & 22 & 62 & 94 &
+▇▂▂▂▂ \\
+departamento\_id & 173 & 0.99 & 35126.96 & 29356.14 & 0 & 6693 & 22105 &
+62035 & 90119 & ▇▃▂▂▃ \\
+superficie\_sembrada\_ha & 0 & 1.00 & 12752.37 & 28634.41 & 1 & 600 &
+3300 & 13000 & 558000 & ▇▁▁▁▁ \\
+superficie\_cosechada\_ha & 532 & 0.98 & 10011.70 & 24723.97 & 0 & 400 &
+2200 & 8600 & 499860 & ▇▁▁▁▁ \\
+produccion\_tm & 533 & 0.98 & 36524.00 & 118047.30 & 0 & 490 & 3600 &
+22500 & 3399048 & ▇▁▁▁▁ \\
+rendimiento\_kgxha & 533 & 0.98 & 2411.69 & 2116.75 & 0 & 1000 & 1570 &
+3000 & 33333 & ▇▁▁▁▁ \\
+\end{longtable}
+
+\hypertarget{relacion-entre-variables}{%
+\subsection{Relacion entre variables}\label{relacion-entre-variables}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(Prod\_maiz}\SpecialCharTok{$}\NormalTok{anio,Prod\_maiz}\SpecialCharTok{$}\NormalTok{superficie\_sembrada\_ha)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TP_Final_maiz_files/figure-latex/unnamed-chunk-18-1.pdf}
+
+\end{document}

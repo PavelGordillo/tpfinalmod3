@@ -1,0 +1,235 @@
+---
+title: "Power_Point_TPFinal"
+author: "Grupo 1"
+date: "`r Sys.Date()`"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Presentación - Trabajo Final M3
+
+Integrantes:
+
+- Arregui María Zoe
+- Cendagorta Paz
+- Gordillo Arriagada Pablo
+- Ortega Leonardo
+- Villar Sergio
+- Rodas Eduardo
+
+
+
+```{r}
+datos <- read.csv("/cloud/project/Prod_maiz.csv")
+```
+
+## Ver cabecera del Archivo
+
+```{r}
+print(head(datos))
+```
+
+## Ver pie del Archivo
+
+```{r}
+print(tail(datos))
+```
+
+## Seleccionar las columnas de interés
+
+```{r}
+print(columnas_interes <- datos[,c(8,9,10,11)])
+```
+
+## Promedio de cada columna de interés
+
+```{r}
+promedio_columnas <- colMeans(columnas_interes, na.rm = TRUE)
+print(promedio_columnas)
+```
+## Desvio estándar de las columnas seleccionadas
+
+```{r}
+desvio_columnas <- apply(columnas_interes,2,sd,na.rm = TRUE)
+print(desvio_columnas)
+```
+## Crear histograma del rendimiento
+
+```{r}
+hist(datos$rendimiento_kgxha,
+     breaks = 20, 
+     col = "lightblue", 
+     main = "Distribución del Rendimiento de Maíz",
+     xlab = "Rendimiento (kg/ha)",
+     ylab = "Frecuencia",
+     xlim = c(0,15000)) 
+```
+
+## Análisis histograma del rendimiento
+
+- ***Eje Y***: Representa la ***"Frecuencia"*** con una escala de 0 a 20000.
+
+- ***Eje X***: Muestra el "Rendimiento (Kg/ha)" con una escala de 0 a 15000.
+
+- ***Barras Azules***: hay cinco barras que representan diferentes rangos de rendimiento. La altura de cada barra indica la frecuencia de ese rango de rendimiento.
+
+La distribución es tal que hay una frecuencia muy alta, cerca de 20000, para un rendimiento de 0 a aproximadamente 2500 kg/ha. La barras siguientes son considereadamente mas bajas, indicando una distribución en la frecuencia a medida que aumenta el rango de rendimiento. Esto sugiere que los rendimientos más altos son menos comunes*.
+
+## Crear histograma de la Superficie Sembrada
+
+```{r}
+hist(datos$superficie_sembrada_ha,
+     breaks = 20, 
+     col = "lightblue", 
+     main = "Distribución de Superficie Sembrada de Maíz",
+     xlab = "Superficie Sembrada (hectáreas)",
+     ylab = "Frecuencia",
+     xlim = c(0,150000))
+```
+
+## Análisis histograma Superficie Sembrada I
+
+- El gráfico **"Distribución de Superficie Sembrada de Maiz"** muestra la frecuencia de la superficie sembrada de maíz en hectáreas.
+
+- El eje Y representa la **"Frecuencia"** con un rango de 0 a 25000.
+
+- El eje X muestra la **"Superficie Sembrada (hectareas)"** con un rango que va desde 0 hasta 150000
+
+## Análisis histograma Superficie Sembrada II
+
+Hay dos barras en el grafico:
+
+- Una Barra muy alta que llega hasta aproximandamente 25000 en frecuencia para un rango bajo de superficie sembrada
+
+- Otra barra mucho mas corta para un rango ligeramente superior de superficie sembrada.
+
+Esto indica que hay una gran frecuencia de áreas donde se siembra una cantidad menor de maís, mientras que hay menos áreas donde se siembre una mayor cantidad.
+
+## Crear histograma de la superficie cosechada
+
+```{r}
+hist(datos$superficie_cosechada_ha,
+     breaks = 20, 
+     col = "lightblue", 
+     main = "Distribución de Superficie Cosechada de Maíz",
+     xlab = "Superficie Cosechada (hectáreas)",
+     ylab = "Frecuencia",
+     xlim = c(0,150000))
+```
+
+## Análisis histograma de la superficie cosechada I
+
+El gráfico ***"Distribución de Superficie Cosechada de Maiz" es un grafico de barras horizontales que muestra la frecuencia de las superficie cosechada de maiz en diferentes rangos de hectáreas.
+
+* Eje Y representa la ***Frecuencia*** con una escala que va de 0 a 25000.
+
+* Eje X representa ***Superficie Cosechada en hectáreas*** con una escala de 0 a 150000 hectareas.
+
+## Análisis histograma de la superficie cosechada II
+
+* Barras del gráfico:
+
+  1. La primera barra representa una frecuencia muy alta (hasta 25000) para una superficie cosechada baja (0 a 50000 hectareas).
+  2. La segunda barra representa una frecuencia significativamente mas baja para un rango de superfice cosechada ligeramente mayor (50000 a 1000000 hectáreas).
+  
+No hay barras presentes para rangos superiores a 100000 hectareas, lo que indica que o hay datos o que son insignifacntes para esos rangos. Por lo tanto, el grafico muestra que la mayorá de la superficie cosechada se encuentra en el rango de 0 a 50000 hectáreas.
+
+
+## Crear histograma de la producción
+
+```{r}
+hist(datos$produccion_tm,
+     breaks = 20, 
+     col = "lightblue", 
+     main = "Distribución de Producción de Maíz",
+     xlab = "Producción (toneladas)",
+     ylab = "Frecuencia",
+)
+```
+
+## Análisis histograma Distribución de producción de Maíz I
+
+El gráfico ***"Distribución de producción de Maiz" es un grafico de barras horizontales que muestra la frecuencia de producción de maiz en diferentes rangos de toneladas.
+
+* Eje Y representa la ***Frecuencia*** con una escala que va de 0 a 25000.
+
+* Eje X representa ***Producción en toneladas*** con una escala de 0 a 35000000 toneladas.
+
+## Análisis histograma Distribución de producción de Maíz II
+
+* Barras del gráfico:
+
+  1. La primera barra representa una frecuencia muy alta (hasta 25000) para una producción baja (0 a 250000 toneladas).
+  
+  2. La segunda barra representa una frecuencia significativamente mas baja para un rango de producción mayor (250000 a 500000 hectáreas).
+  
+No hay barras presentes para rangos superiores a 1000000 toneladas, lo que indica que o hay datos o que son insignifacntes para esos rangos.Por lo tanto, el grafico muestra que la mayorá de la superficie producida se encuentra en el rango de 0 a 500000 toneladas.
+
+
+
+```{r}
+library(readr)
+Prod_maiz <- read_csv("Prod_maiz.csv", col_types = cols(provincia_id = col_double(), 
+    departamento_id = col_double()))
+```
+
+## Box plot Superficie Sembrada
+
+```{r}
+boxplot(Prod_maiz$superficie_sembrada_ha)
+
+```
+
+## Box plot Superficie Cosechada
+
+```{r}
+boxplot(Prod_maiz$superficie_cosechada_ha)
+```
+## Box plot Producción TM
+
+```{r}
+boxplot(Prod_maiz$produccion_tm)
+```
+
+## Box plot Rendimiento
+
+```{r}
+boxplot(Prod_maiz$rendimiento_kgxha)
+```
+
+## Density plot Superficie Sembrada
+
+```{r}
+plot(density(na.omit(Prod_maiz$superficie_sembrada_ha)))
+```
+
+## Density plot Superficie Cosechada
+
+```{r}
+plot(density(na.omit(Prod_maiz$superficie_cosechada_ha)))
+```
+
+## Density plot Producción
+
+```{r}
+plot(density(na.omit(Prod_maiz$produccion_tm)))
+```
+
+## Density plot Rendimiento
+
+```{r}
+plot(density(na.omit(Prod_maiz$rendimiento_kgxha)))
+```
+
+## Relacion entre variables
+
+```{r}
+plot(Prod_maiz$anio,Prod_maiz$superficie_sembrada_ha)
+```
+
+## Fin
+
+- Gracias
